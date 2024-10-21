@@ -1,0 +1,26 @@
+<!-- root.html.heex -->
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mein Chat</title>
+
+  <!-- Hier wird die CSS-Datei eingebunden -->
+  <link rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css" )}>
+</head>
+
+<body>
+  <header class="bg-gradient-to-r from-pink-500 to-purple-500 text-white py-4">
+    <div class="container mx-auto flex justify-between items-center px-4">
+      <!-- Text "Mein Chat" -->
+      <h1 class="text-2xl font-bold">Mein Chat</h1>
+
+      <!-- Logo (kleiner Affe) -->
+      <div>
+        <img src={Routes.static_path(@conn, "/images/monkey.png" )} alt="Monkey Logo" class="h-10">
+      </div>
+    </div>
+  </header>
+
+  <%= @inner_content %>
+</body>

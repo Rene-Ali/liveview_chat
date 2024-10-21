@@ -1,0 +1,64 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Gen Z Style - Helle Farben und Animationen */
+
+/* Hintergrund und Schrift */
+body {
+  @apply bg-gradient-to-r from-pink-300 via-purple-300 to-blue-300 text-gray-900 font-sans leading-normal tracking-wide;
+}
+
+/* Header */
+header {
+  @apply bg-gradient-to-r from-pink-400 to-purple-500 text-white py-6;
+}
+
+h1 {
+  @apply text-4xl font-extrabold text-center animate-pulse;
+}
+
+/* Container */
+.container {
+  @apply mx-auto max-w-screen-md px-6 py-8;
+}
+
+/* Nachrichtenliste */
+#msg-list {
+  @apply list-none p-0 space-y-4;
+}
+
+#msg-list li {
+  @apply bg-white shadow-lg rounded-lg p-4 mb-2 transform transition-all duration-300 hover:scale-105 hover:bg-purple-100;
+}
+
+/* Formular */
+form {
+  @apply flex flex-col space-y-4;
+}
+
+input[type="text"],
+input[type="submit"] {
+  @apply px-4 py-3 border-2 border-purple-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300;
+}
+
+input[type="submit"] {
+  @apply bg-gradient-to-r from-pink-400 to-purple-500 text-white font-bold cursor-pointer hover:from-purple-500 hover:to-pink-400 transform transition-transform duration-300 hover:scale-110;
+}
+
+/* Animationen */
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+ul#msg-list li {
+  animation: bounceIn 0.5s ease-out;
+}

@@ -1,0 +1,41 @@
+<!-- Nachrichtenliste -->
+<ul id="msg-list" phx-update="append" class="space-y-4 mb-8">
+  <!-- Hier mb-8 für Abstand -->
+  <%= for message <- @messages do %>
+    <li id={"msg-#{message.id}"} class="relative bg-gray-100 p-4 rounded-lg shadow-md">
+      <b><%= message.name %>:</b> <%= message.message %>
+      <!-- Delete Button -->
+      <button
+        phx-click="delete_message"
+        phx-value-id={message.id}
+        class="absolute right-0 top-0 bg-red-500 text-white px-3 py-1 rounded-full hover:bg-red-700"
+      >
+        X
+      </button>
+    </li>
+  <% end %>
+</ul>
+<!-- Formular für neue Nachrichten -->
+<%= form_for @changeset, "#", [id: "form", phx_submit: "new_message", phx_hook: "Form"], fn f -> %>
+  <div class="flex flex-col space-y-2">
+    <div class="flex flex-col">
+      <%= text_input(f, :name,
+        id: "name",
+        class: "border-2 border-gray-300 bg-gray-100 p-2 rounded-md w-full",
+        placeholder: "Your name",
+        autofocus: true
+      ) %> <%= error_tag(f, :name) %>
+    </div>
+    
+    <div class="flex flex-col">
+      <%= text_input(f, :message,
+        id: "msg",
+        class: "border-2 border-gray-300 bg-gray-100 p-2 rounded-md w-full",
+        placeholder: "Your message"
+      ) %> <%= error_tag(f, :message) %>
+    </div>
+     <%= submit("Send",
+      class: "bg-green-500 text-white px-4 py-2 rounded-lg mt-2 hover:bg-green-700"
+    ) %>
+  </div>
+<% end %>
